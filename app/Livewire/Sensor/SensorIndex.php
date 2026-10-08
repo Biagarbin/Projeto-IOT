@@ -18,6 +18,12 @@ class SensorIndex extends Component
         }
     }
 
+    public function status ($id){
+        $sensor = Sensor::find($id);
+        $sensor->status = !$sensor->status;
+        $sensor->save();
+    }
+    
     public function render()
     {
         $sensor = Sensor::where('nome', 'like', '%'.$this->search.'%')->get();
